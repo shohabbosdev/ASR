@@ -1,0 +1,6 @@
+transformers
+torchvision 
+torchaudio
+streamlit
+python-docx
+environs
