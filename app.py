@@ -8,7 +8,6 @@ from docx.enum.text import WD_ALIGN_PARAGRAPH
 from io import BytesIO 
 from transformers import pipeline
 from config import API_KEY,OAPI_URL
-# pipe = pipeline("text-to-audio", model="shohabbosdev/text-to-audio") 
 
 st.set_page_config(page_title='Uzbek-ASR', page_icon=':shark:', layout='centered')  
 
@@ -43,7 +42,7 @@ def text_to_audio(text):
         return None  
 
 st.markdown("# 🌐:rainbow[Audio va matn bilan ishlash]")  
-tab1, tab2 = st.tabs(["🔈 STT (Audiodan matnga o'tkazish)", "📝 TTS (Matngdan audioga o'tkazish)"])  
+tab1, tab2 = st.tabs(["🔈 STT (Audiodan matnga o'tkazish)", "📝 TTS (Matndan audioga o'tkazish)"])  
 
 with tab1:
     faollatgich = st.toggle(":rainbow[Audio yuklaymizmi?]")  
