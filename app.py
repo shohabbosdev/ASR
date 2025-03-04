@@ -7,7 +7,7 @@ from docx import Document
 from docx.enum.text import WD_ALIGN_PARAGRAPH  
 from io import BytesIO 
 from transformers import pipeline
-from config import API_KEY
+from config import API_KEY,OAPI_URL
 # pipe = pipeline("text-to-audio", model="shohabbosdev/text-to-audio") 
 
 st.set_page_config(page_title='Uzbek-ASR', page_icon=':shark:', layout='centered')  
@@ -32,7 +32,7 @@ def text_to_audio(text):
         headers = {"Content-Type": "application/json"}  
         data = {"text": text}  
         urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)  
-        response = requests.post(st.secrets['OAPI_URL'], headers=headers, json=data, verify=False)  
+        response = requests.post(OAPI_URL, headers=headers, json=data, verify=False)  
         
         if response.status_code == 200:  
             return response.content  
