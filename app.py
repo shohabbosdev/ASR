@@ -10,6 +10,7 @@ from transformers import pipeline
 from config import API_KEY,OAPI_URL
 import torch
 
+st.set_page_config(page_title='Uzbek-ASR', page_icon=':shark:', layout='centered')  
 
 # CUDA mavjudligini aniq tekshirib, log'ga chiqaring
 cuda_available = torch.cuda.is_available()
@@ -17,7 +18,6 @@ st.write(f"CUDA mavjudmi: {cuda_available}")
 if cuda_available:
     st.write(f"GPU nomi: {torch.cuda.get_device_name(0)}")
 
-st.set_page_config(page_title='Uzbek-ASR', page_icon=':shark:', layout='centered')  
 
 def write_word(text):  
     document = Document()  
