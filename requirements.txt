@@ -1,7 +1,6 @@
 transformers
 torchvision 
-torchaudio
+torchaudio --index-url https://download.pytorch.org/whl/cu118
 streamlit
 python-docx
 environs
---index-url https://download.pytorch.org/whl/cu118
