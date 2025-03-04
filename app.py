@@ -8,6 +8,12 @@ from docx.enum.text import WD_ALIGN_PARAGRAPH
 from io import BytesIO 
 from transformers import pipeline
 from config import API_KEY,OAPI_URL
+import torch
+
+
+# GPU borligini tekshirish
+device = 0 if torch.cuda.is_available() else -1
+print(f"Qurilma: {'GPU' if device==0 else 'CPU'}")
 
 st.set_page_config(page_title='Uzbek-ASR', page_icon=':shark:', layout='centered')  
 
