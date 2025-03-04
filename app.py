@@ -11,9 +11,11 @@ from config import API_KEY,OAPI_URL
 import torch
 
 
-# GPU borligini tekshirish
-device = 0 if torch.cuda.is_available() else -1
-print(f"Qurilma: {'GPU' if device==0 else 'CPU'}")
+# CUDA mavjudligini aniq tekshirib, log'ga chiqaring
+cuda_available = torch.cuda.is_available()
+st.write(f"CUDA mavjudmi: {cuda_available}")
+if cuda_available:
+    st.write(f"GPU nomi: {torch.cuda.get_device_name(0)}")
 
 st.set_page_config(page_title='Uzbek-ASR', page_icon=':shark:', layout='centered')  
 
@@ -27,7 +29,13 @@ def write_word(text):
 
 @st.cache_resource  
 def stt(audio_path):  
-    transcriber = pipeline(task="automatic-speech-recognition", token=API_KEY, model="shohabbosdev/whisper-uzbek")  
+    device = 0 if cuda_available else -1
+    transcriber = pipeline(
+        task="automatic-speech-recognition", 
+        token=API_KEY, 
+        model="shohabbosdev/whisper-uzbek",
+        device=device
+        )  
     result = transcriber(audio_path, return_timestamps=True)  
     return result
 
